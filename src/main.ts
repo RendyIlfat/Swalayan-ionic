@@ -33,28 +33,28 @@ const app = createApp(App)
   .use(IonicVue)
   .use(router);
   
-router.isReady().then(() => {
+axios.get('auth')
+  .then(result => {
 
-  axios.get('auth')
-    .then(result => {
+    const data = result.data?.value
+    const mess = result.data?.mess
+    const isError = result.data?.isError
 
-      const data = result.data?.value
-      const mess = result.data?.mess
-      const isError = result.data?.isError
+    if(isError) {
+      user.value = null
+      token.value = ''
+      return
+    }
 
-      if(isError) {
-        return
-      }
+    user.value = data 
+    console.log(user.value)
 
-      user.value = data 
-      console.log(user.value)
+  }).catch(error => {
 
-    }).catch(error => {
+  }).finally(() => {
 
-    }).finally(() => {
-
+    router.isReady().then(() => {
       app.mount('#app');
-
-    })
+    });
   
 });

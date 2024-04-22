@@ -36,9 +36,11 @@
 import { ref } from "vue";
 import { axios } from "../../services/axios";
 import { token, user, TUser } from "../../services/user";
+import { useRouter } from "vue-router";
 
 const email = ref('rendy@rendy.com')
 const password = ref('123')
+const router = useRouter()
 
 const login = () => {
 
@@ -55,11 +57,11 @@ const login = () => {
             return
         }
 
-        user.value = data 
+        user.value = result.data?.value
         token.value = result.data?.token
-        console.log(user.value)
 
-
+        router.replace('tabs/tab1')
+        
     }).catch(error => {
         console.log(error)
     })
