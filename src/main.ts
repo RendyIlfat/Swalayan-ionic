@@ -29,9 +29,12 @@ import './theme/global.css';
 import { axios } from "./services/axios";
 import { token, user } from "./services/user";
 
+import * as VueQrcodeReader from 'vue-qrcode-reader'
+
 const app = createApp(App)
   .use(IonicVue)
-  .use(router);
+  .use(router)
+  .use(VueQrcodeReader)
   
 axios.get('auth')
   .then(result => {
@@ -47,7 +50,7 @@ axios.get('auth')
     }
 
     user.value = data 
-    console.log(user.value)
+    // console.log(user.value)
 
   }).catch(error => {
 
