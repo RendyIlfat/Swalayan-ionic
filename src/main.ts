@@ -26,10 +26,35 @@ import './theme/variables.css';
 /* Theme Global CSS */
 import './theme/global.css';
 
+import { axios } from "./services/axios";
+import { token, user } from "./services/user";
+
 const app = createApp(App)
   .use(IonicVue)
   .use(router);
   
 router.isReady().then(() => {
-  app.mount('#app');
+
+  axios.get('auth')
+    .then(result => {
+
+      const data = result.data?.value
+      const mess = result.data?.mess
+      const isError = result.data?.isError
+
+      if(isError) {
+        return
+      }
+
+      user.value = data 
+      console.log(user.value)
+
+    }).catch(error => {
+
+    }).finally(() => {
+
+      app.mount('#app');
+
+    })
+  
 });

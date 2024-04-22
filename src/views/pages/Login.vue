@@ -23,7 +23,7 @@
                         placeholder="Masukkan Password"></ion-input>
 
                     <div class="text-center">
-                        <ion-button size="default">Masuk</ion-button>
+                        <ion-button @click="login" size="default">Masuk</ion-button>
                     </div>
                 </ion-card-content>
             </ion-card>
@@ -33,6 +33,38 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
+import { axios } from "../../services/axios";
+import { token, user, TUser } from "../../services/user";
+
+const email = ref('rendy@rendy.com')
+const password = ref('123')
+
+const login = () => {
+
+    axios.post('login', {
+        email: email.value,
+        password: password.value,
+    }).then(result => {
+
+        const data = result.data?.value
+        const mess = result.data?.mess
+        const isError = result.data?.isError
+
+        if(isError) {
+            return
+        }
+
+        user.value = data 
+        token.value = result.data?.token
+        console.log(user.value)
+
+
+    }).catch(error => {
+        console.log(error)
+    })
+
+}
 
 </script>
 <style></style>
