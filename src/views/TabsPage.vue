@@ -9,6 +9,11 @@
           <ion-label>Beranda</ion-label>
         </ion-tab-button>
 
+        <ion-tab-button tab="transaction" href="/tabs/transaction">
+          <ion-icon aria-hidden="true" :icon="cartOutline" />
+          <ion-label>Transaksi</ion-label>
+        </ion-tab-button>
+
         <ion-tab-button tab="tab2" href="/tabs/tab2">
           <ion-icon aria-hidden="true" :icon="bagOutline" />
           <ion-label>Barang</ion-label>
@@ -25,5 +30,5 @@
 </template>
 
 <script setup lang="ts">
-import { homeOutline, bagOutline, personCircleOutline} from 'ionicons/icons';
+import { homeOutline, bagOutline, personCircleOutline, cartOutline} from 'ionicons/icons';
 </script>
