@@ -17,9 +17,9 @@
                     <ion-card-title class="text-center">Login</ion-card-title>
                 </ion-card-header>
                 <ion-card-content>
-                    <ion-input label="Email" label-placement="floating" fill="solid" 
+                    <ion-input v-model="email" label="Email" label-placement="floating" fill="solid" 
                         placeholder="Masukkan Email"></ion-input>
-                    <ion-input label="Password" label-placement="floating" fill="solid" 
+                    <ion-input v-model="password" label="Password" label-placement="floating" fill="solid" 
                         placeholder="Masukkan Password"></ion-input>
 
                     <div class="text-center">
@@ -34,11 +34,11 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { axios } from "../../services/axios";
-import { token, user, TUser } from "../../services/user";
+import { axios } from "@/services/axios";
+import { token, user, TUser } from "@/services/user";
 import { useRouter } from "vue-router";
 
-const email = ref('rendy@rendy.com')
+const email = ref('rendyilfat@rendy.com')
 const password = ref('123')
 const router = useRouter()
 

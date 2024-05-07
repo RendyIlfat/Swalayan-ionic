@@ -9,5 +9,5 @@ export type TUser = {
 
 import { useStorage } from "@vueuse/core";
 
-export const user = userStorage<TUser>('user-data', null)
-export const token = userStorage<string>('user-token', '')
+export const user = useStorage<TUser>('user-data', null)
+export const token = useStorage<string>('user-token', '')

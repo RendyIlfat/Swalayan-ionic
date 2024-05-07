@@ -15,6 +15,6 @@ axios.defaults.headers.common["Authorization"] = "Bearer" + token.value;
 
 // Watch for changes in TokenStorage and update thr Authorization header accordingly
 watch(token, (newVal) => {
-    axios.defaults.headers.commom["Authorization"] = "Bearer" + token.value;
+    axios.defaults.headers.common["Authorization"] = "Bearer" + token.value;
     console.log({ "New token": "Bearer" + token.value })
 });

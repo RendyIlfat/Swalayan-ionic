@@ -30,11 +30,11 @@
 </template>
 
 <script setup lang="ts">
-import { axios } from "../services/axios";
+import { axios } from "@/services/axios";
 import { onMounted, ref } from "vue";
-import { stuff } from "../services/stuff";
+import { stuff } from "@/services/stuff";
 import { addCircle } from "ionicons/icons";
-import { cart } from "../services/cart";
+import { cart } from "@/services/cart";
 
 onMounted(() => {
     axios.get('stuffs')
